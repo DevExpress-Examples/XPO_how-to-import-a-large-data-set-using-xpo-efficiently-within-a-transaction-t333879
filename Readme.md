@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [Program.cs](./CS/XpoImport/Program.cs) (VB: [Program.vb](./VB/XpoImport/Program.vb))
+* **[XpoImportHelper.cs](./CS/XpoImport/XpoImportHelper.cs) (VB: [XpoImportHelper.vb](./VB/XpoImport/XpoImportHelper.vb))**
+<!-- default file list end -->
 # How to import a large data set using XPO efficiently within a transaction
 
 
