@@ -13,6 +13,6 @@
     <Compile Include="..\XpoImport - VB\XpoImportHelper.vb" Link="XpoImportHelper.vb" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Xpo" Version="19.2.7" />
+    <PackageReference Include="DevExpress.Xpo" Version="19.2.9" />
   </ItemGroup>
 </Project>

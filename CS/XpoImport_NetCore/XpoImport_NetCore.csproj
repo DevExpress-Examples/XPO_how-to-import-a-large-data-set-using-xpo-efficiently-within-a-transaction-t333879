@@ -8,6 +8,6 @@
     <Compile Include="..\XpoImport\XpoImportHelper.cs" Link="XpoImportHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Xpo" Version="19.2.7" />
+    <PackageReference Include="DevExpress.Xpo" Version="19.2.9" />
   </ItemGroup>
 </Project>
