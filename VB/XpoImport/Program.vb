@@ -1,18 +1,16 @@
-﻿Imports DevExpress.Data.Filtering
+Imports DevExpress.Data.Filtering
 Imports DevExpress.Xpo
 Imports DevExpress.Xpo.Helpers
 Imports System
-Imports System.Collections
-Imports System.Collections.Generic
 Imports System.Linq
-Imports System.Text
 
 Namespace DevExpress.Sample
 
     Friend Class Program
-        Shared Sub Main(ByVal args() As String)
-            TestPass()
-            TestFail()
+
+        Shared Sub Main(ByVal args As String())
+            Call TestPass()
+            Call TestFail()
             Console.ReadLine()
         End Sub
 
@@ -27,19 +25,20 @@ Namespace DevExpress.Sample
             Dim dal As IDataLayer = CreateDataLayer()
             Dim helper = New SampleXpoImportHelper(dal, 100)
             Try
-                helper.Import(Enumerable.Range(1, 10000).Select(Function(x)If(x < 1234, x, x - 1))) 'a duplicated entry
+                helper.Import(Enumerable.Range(1, 10000).[Select](Function(x) If(x < 1234, x, x - 1))) 'a duplicated entry
             Catch ex As Exception
                 Console.WriteLine(ex.GetType().Name)
             End Try
+
             Report(dal)
         End Sub
 
         Private Shared Function CreateDataLayer() As IDataLayer
-            Dim dict = New DevExpress.Xpo.Metadata.ReflectionDictionary()
+            Dim dict = New Metadata.ReflectionDictionary()
             Dim classes = dict.CollectClassInfos(GetType(SampleObject).Assembly)
-            Dim provider = XpoDefault.GetConnectionProvider(DevExpress.Xpo.DB.MSSqlConnectionProvider.GetConnectionString("localhost", "XpoImportHelperTest"), Xpo.DB.AutoCreateOption.DatabaseAndSchema)
+            Dim provider = XpoDefault.GetConnectionProvider(DB.MSSqlConnectionProvider.GetConnectionString("localhost", "XpoImportHelperTest"), DB.AutoCreateOption.DatabaseAndSchema)
             Dim dal = New SimpleDataLayer(dict, provider)
-            DirectCast(dal, IDataLayerForTests).ClearDatabase()
+            CType(dal, IDataLayerForTests).ClearDatabase()
             dal.UpdateSchema(False, classes)
             Return dal
         End Function
@@ -58,9 +57,11 @@ Namespace DevExpress.Sample
         Public Sub New(ByVal s As Session)
             MyBase.New(s)
         End Sub
-        Public Property Name() As String
-        <Indexed(Unique := True)> _
-        Public Property Rank() As Integer
+
+        Public Property Name As String
+
+        <Indexed(Unique:=True)>
+        Public Property Rank As Integer
     End Class
 
     Public Class SampleXpoImportHelper
@@ -69,10 +70,11 @@ Namespace DevExpress.Sample
         Public Sub New(ByVal dataLayer As IDataLayer, ByVal batchSize As Integer)
             MyBase.New(dataLayer, batchSize)
         End Sub
+
         Protected Overrides Function CreatePersistentObject(ByVal session As Session, ByVal sourceObject As Object) As Object
             Dim obj = New SampleObject(session)
-            obj.Name = String.Format("sample{0:d5}", DirectCast(sourceObject, Integer))
-            obj.Rank = DirectCast(sourceObject, Integer)
+            obj.Name = String.Format("sample{0:d5}", CInt(sourceObject))
+            obj.Rank = CInt(sourceObject)
             Return obj
         End Function
     End Class
