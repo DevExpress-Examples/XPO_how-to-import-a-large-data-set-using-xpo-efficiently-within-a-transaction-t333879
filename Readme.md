@@ -19,7 +19,7 @@ When you are required to import a large data set into a database as XPO persiste
 
 
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=XPO_how-to-import-a-large-data-set-using-xpo-efficiently-within-a-transaction-t333879&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=XPO_how-to-import-a-large-data-set-using-xpo-efficiently-within-a-transaction-t333879&~~~was_helpful=no)
 
